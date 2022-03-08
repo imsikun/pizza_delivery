@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+
 function SinglePizza({ pizza }) {
   const [quantity, setQuantity] = useState(1);
   const [varient, setVarient] = useState('small');
@@ -12,12 +13,9 @@ function SinglePizza({ pizza }) {
     setShowModal(false);
     console.log('closing');
   };
-
+  const addToCart = () => {};
   return (
-    <div
-      style={{ margin: '70px' }}
-      className='shadow-lg p-3 mb-5 bg-body rounded'
-    >
+    <div className='shadow-lg p-3 mb-5 bg-body rounded'>
       <div onClick={handleShow}>
         <h1>{pizza.name}</h1>
         <img src={pizza.image} className='img-fluid pizza-img' alt='' />
@@ -30,8 +28,10 @@ function SinglePizza({ pizza }) {
             value={varient}
             onChange={(e) => setVarient(e.target.value)}
           >
-            {pizza.varients.map((varient) => (
-              <option value={varient}>{varient}</option>
+            {pizza.varients.map((varient, idx) => (
+              <option value={varient} key={idx}>
+                {varient}
+              </option>
             ))}
           </select>
         </div>
@@ -44,7 +44,9 @@ function SinglePizza({ pizza }) {
           >
             {/* creating an empty array with 1 to 10 */}
             {[...Array(10).keys()].map((x, i) => (
-              <option value={i + 1}>{i + 1}</option>
+              <option key={i} value={i + 1}>
+                {i + 1}
+              </option>
             ))}
           </select>
         </div>
@@ -56,7 +58,9 @@ function SinglePizza({ pizza }) {
           </h1>
         </div>
         <div className='m-1 w-100'>
-          <button className='btn'>ADD TO CART</button>
+          <button className='btn' onSubmit={addToCart}>
+            ADD TO CART
+          </button>
         </div>
       </div>
 
