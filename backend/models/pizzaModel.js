@@ -4,21 +4,21 @@ const pizzaSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      require,
+      required: true,
     },
     varients: [],
     prizes: [],
     category: {
       type: String,
-      require,
+      required: true,
     },
     image: {
       type: String,
-      require,
+      required: true,
     },
     description: {
       type: String,
-      require,
+      require: true,
     },
   },
 

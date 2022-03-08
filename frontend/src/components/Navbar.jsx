@@ -1,4 +1,8 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from '../features/pizza/pizzaSlice';
 function Navbar() {
+  const { cartItem } = useSelector((state) => state.pizzas);
+
   return (
     <nav className='navbar navbar-expand-lg shadow-lg p-3 mb-5 bg-body rounded'>
       <div className='container-fluid'>
@@ -25,7 +29,7 @@ function Navbar() {
             </li>
             <li className='nav-item'>
               <a className='nav-link' href='#'>
-                Cart
+                Cart {cartItem.length}
               </a>
             </li>
           </ul>
